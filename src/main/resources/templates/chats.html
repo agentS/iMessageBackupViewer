@@ -1,0 +1,14 @@
+<th:block xmlns:th="http://www.thymeleaf.org"
+    th:replace="base :: main(~{::content})">
+    <th:block th:fragment="content">
+        <h1 class="text-3xl font-bold">Chat overview</h1>
+
+        <ul>
+            <!--/* @thymesVar id="chats" type="java.util.List<com.schurkenhuber.imessagagebackupviewer.model.Chat>" */-->
+            <!--/* @thymesVar id="chatNames" type="java.util.Map<java.lang.Long, java.lang.String>" */-->
+            <li th:each="chat : ${chats}">
+                <a th:text="${chatNames.get(chat.chatId)}" th:href="'/chats/' + ${chat.chatId} + '.html'"></a>
+            </li>
+        </ul>
+    </th:block>
+</th:block>

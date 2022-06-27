@@ -1,0 +1,12 @@
+<th:block xmlns:th="http://www.thymeleaf.org"
+          th:replace="base :: main(~{::content})">
+    <th:block th:fragment="content">
+        <!--/* @thymesVar id="chat" type="com.schurkenhuber.imessagagebackupviewer.model.Chat" */-->
+        <!--/* @thymesVar id="chatName" type="java.lang.String" */-->
+        <h1 th:text="'Chat with ' + ${chatName}" class="text-3xl font-bold"></h1>
+
+        <div th:each="message : ${chat.messages}">
+            <span th:text="${message.text}"></span>
+        </div>
+    </th:block>
+</th:block>

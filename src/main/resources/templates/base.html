@@ -1,0 +1,17 @@
+<th:block th:fragment="main(content)" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <link href="./main.css" rel="stylesheet" />
+
+        <title>iMessage Backup Viewer</title>
+    </head>
+    <body class="p-6">
+        <th:block th:replace="${content}" />
+    </body>
+</html>
+</th:block>
+
