@@ -1,6 +1,10 @@
 package com.schurkenhuber.imessagagebackupviewer.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
 
 data class Chat(
     @JsonProperty("chat_id") val chatId: Long,
@@ -18,4 +22,6 @@ data class Message(
     @JsonProperty("is_from_me") val isFromMe: Boolean,
     @JsonProperty val text: String,
     @JsonProperty("attachment_path") val attachmentPath: String?,
-)
+) {
+    val dateTime = ZonedDateTime.ofInstant(Instant.ofEpochSecond(this.date), ZoneId.of("UTC"))
+}

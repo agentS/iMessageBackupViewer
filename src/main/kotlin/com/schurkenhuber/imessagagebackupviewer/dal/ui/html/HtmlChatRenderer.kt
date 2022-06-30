@@ -4,6 +4,7 @@ import com.schurkenhuber.imessagagebackupviewer.dal.ui.ChatRenderer
 import com.schurkenhuber.imessagagebackupviewer.model.Chat
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
+import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect
 import org.thymeleaf.templatemode.TemplateMode
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
 import java.io.File
@@ -19,6 +20,7 @@ class HtmlChatRenderer : ChatRenderer {
 
     init {
         this.templateEngine = TemplateEngine()
+        this.templateEngine.addDialect(Java8TimeDialect())
         val templateResolver = ClassLoaderTemplateResolver()
         templateResolver.prefix = "/templates/"
         templateResolver.suffix = ".html"

@@ -1,12 +1,26 @@
 <th:block xmlns:th="http://www.thymeleaf.org"
-          th:replace="base :: main(~{::content})">
+    th:replace="base :: main(~{::content})">
     <th:block th:fragment="content">
         <!--/* @thymesVar id="chat" type="com.schurkenhuber.imessagagebackupviewer.model.Chat" */-->
         <!--/* @thymesVar id="chatName" type="java.lang.String" */-->
         <h1 th:text="'Chat with ' + ${chatName}" class="text-3xl font-bold"></h1>
 
-        <div th:each="message : ${chat.messages}">
-            <span th:text="${message.text}"></span>
+        <div th:each="message : ${chat.messages}"
+             th:class="${message.isFromMe() ? 'bg-green-500' : 'bg-sky-500'} + ' mt-2 rounded'"
+        >
+            <img th:if="${message.attachmentPath != null && !message.attachmentPath.isEmpty()}"
+                 th:src="'/attachments/' + ${message.attachmentPath}"
+                 class="w-full md:w-96"
+                />
+            <p class="text-gray-900" th:text="${message.text}"></p>
+            <p>
+                <span th:text="${message.isFromMe() ? 'myself' : chat.participants.get(message.sender)}"
+                      class="text-gray-700">
+                </span>
+                <span th:text="${#temporals.format(message.dateTime, 'dd.MM.yyyy HH:mm')}"
+                      class="text-gray-700">
+                </span>
+            </p>
         </div>
     </th:block>
 </th:block>

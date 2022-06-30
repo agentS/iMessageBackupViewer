@@ -3,11 +3,15 @@
     <th:block th:fragment="content">
         <h1 class="text-3xl font-bold">Chat overview</h1>
 
-        <ul>
+        <ul class="list-disc pt-6">
             <!--/* @thymesVar id="chats" type="java.util.List<com.schurkenhuber.imessagagebackupviewer.model.Chat>" */-->
             <!--/* @thymesVar id="chatNames" type="java.util.Map<java.lang.Long, java.lang.String>" */-->
             <li th:each="chat : ${chats}">
-                <a th:text="${chatNames.get(chat.chatId)}" th:href="'/chats/' + ${chat.chatId} + '.html'"></a>
+                <a
+                    th:text="${chatNames.get(chat.chatId)}"
+                    th:href="'/chats/' + ${chat.chatId} + '.html'"
+                    class="underline decoration-blue-200"
+                ></a>
             </li>
         </ul>
     </th:block>

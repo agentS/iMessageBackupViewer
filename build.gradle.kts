@@ -15,6 +15,7 @@ repositories {
 dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3")
     implementation("org.thymeleaf:thymeleaf:3.0.15.RELEASE")
+    implementation("org.thymeleaf.extras:thymeleaf-extras-java8time:3.0.4.RELEASE")
     testImplementation(kotlin("test"))
 }
 
